@@ -1,0 +1,64 @@
+<table border="1">
+    <caption>Produtos</caption>
+
+    <!--cabeçalho da tabela-->
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <!--Corpo da tabela-->
+    <tbody>
+        <tr>
+            <td>Ipad</td>
+            <td>3599.99</td>
+            <td>1</td>
+            <td>3599.99</td>
+        </tr>
+        <tr>
+            <td>Moto</td>
+            <td>10599.99</td>
+            <td>1</td>
+            <td>10599.99</td>
+        </tr>
+    </tbody>
+
+    <!--rodapé-->
+    <tfoot>
+        <tr>
+            <td colspan="3" rowspan="2">Total</td>
+            <td>14199,98</td>
+        </tr>
+        <tr>
+            <td>teste</td>
+        </tr>
+    </tfoot>
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th , td {
+        padding: 10px;
+    }
+
+    thead tr {
+        border-bottom: solid 3px #444;
+    }
+
+    tbody tr:hover {
+        background-color: #dedede
+    }
+
+    tfoot {
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
