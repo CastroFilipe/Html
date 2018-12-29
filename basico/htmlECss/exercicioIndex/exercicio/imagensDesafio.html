@@ -1,0 +1,124 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="muro da cidade" 
+        width="513" height="342" title="Pedras e praia">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Gif cod3r"
+        width="342" title="gif com logo">
+    </p>
+    
+    <p class="efeitocircular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="rio de janeiro"
+        height="342">
+    </p>
+    
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" 
+        height="50">
+    
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+        consequat. 
+    
+    </p>
+    
+    <p class="cidade">
+    
+    </p>
+
+</div>
+
+
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+
+    .efeitocircular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%
+    }
+</style>
+
+<script>
+    function moverElemento(figura, posicaoInicial, posicaoFinal, quantidadeDePixelsAMover, callback){
+        console.log('entrou na função')
+        const novaPosicao = posicaoInicial - quantidadeDePixelsAMover;
+        if(novaPosicao >= posicaoFinal){ //se ainda não chegou na posição final
+            figura.style.left = novaPosicao + 'px' //mova a figura para a esquerda
+
+            //a cada 7 ms chamará a função moverElemento de forma recursiva. Fará isso até a figura chegar na posição final.
+            setTimeout(() => moverElemento(figura, novaPosicao, posicaoFinal, quantidadeDePixelsAMover, callback), 7)
+        } else {
+            callback();//função que apenas indicará que o fim foi alcançado.
+        }
+    }
+
+    //testando a função moverElemento
+    // const p = document.querySelector('[wm-slider] > p') //pega o primeiro paragrafo de um elemento com a propriedade wm-slider
+    // console.log('testando p ', p);
+    // p.style.display = 'block' //tornar visível o primeiro <p> (tornará vispível a primeira imagem)
+    // moverElemento(p, 1500, -600, 5, ()=>{
+    //     console.log('A imagem chegou ao fim!!');
+    // })
+
+    function slider(){ //função que pegará as imagens e converte num array. Após isso chamará a função para exibir as imagens.
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const elementosArray = Array.from(elementos) //converte o nodelist em um array
+        console.log(typeof elementosArray[0])
+        console.log(elementosArray)
+
+        exibirSlides(elementosArray, elementosArray[0])//chama
+    }
+
+    function exibirSlides(elementosArray, slideAtual){
+        slideAtual.style.display = 'block' //tornará vísivel a imagem atual
+
+        const inicio = innerWidth //innerWidth é uma propriedade que representa a largura da tela atual. Largura total do navegador
+        const fim = -slideAtual.clientWidth //a propriedade clienteWidth pega a largura total do elemento(largura da imagem)
+        
+        slideAtual.style.left = `${inicio}px` //a imagem começará o movimento a partir do inicio da tela
+
+        moverElemento(slideAtual, inicio, fim, 5, () => {
+
+            //Essa callback será executada sempre que a imagem atual chegar ao final.
+
+           
+            exibirSlides(elementosArray, getProximaImg(elementosArray, slideAtual)) //chamada recursiva com a proxima imagem
+
+        })
+    }
+
+    //função que retornará a proxima imagem. 
+    //Se chegar no final do array, voltará para a primeira imagem.
+    function getProximaImg(elementosArray, slideAtual){
+        const i = elementosArray.indexOf(slideAtual) + 1 //retorna o indice do elemento atual + 1 que é o proximo elemento
+        
+        return i < elementosArray.length ? elementosArray[i] : elementosArray[0]
+    }
+
+    slider();
+    
+</script>
