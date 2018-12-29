@@ -24,9 +24,9 @@
 
     .progresso > div {
         background-color: red;
-        color: green;
+        color: yellow;
         height: 100%;
-        width: 50%;
+        width: 0;
         text-align: right;
         font-size: 14px;
     }
@@ -34,5 +34,38 @@
 </style>
 
 <script>
-    
+    //função com configurações gerais do vídeo. Ela será executada sempre que carregar a página.
+    function configurarVideo(id){
+        const video = document.getElementById(id) //pega o vídeo com o id=meuVideo
+
+        //Ao clicar com o botão direito no vídeo, o menu estará desabilitado.
+        video.oncontextmenu = () => false
+
+        //pegará o evento de click no botão com a propriedade [wm-play=meuVideo]
+        //ao ser precionado chamará a função video.Play()
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()
+
+        //idem ao anterior. fará o pause do vídeo
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+        //Para fazer a barra de progresso.
+        setInterval(() => {
+            const percentualDoVideo = (video.currentTime/video.duration) * 100
+
+            //usando o querySelector para pegar a divi interna em Wm-BarraProgresso.
+            const divInterna = document.querySelector(`[wm-BarraProgresso=${id}] > div`)
+
+            //modificando a propriedade width da div.. Ela será atualizada a cada 7 ms, de acordo com a função setInterval
+            divInterna.style.width = `${percentualDoVideo}%`
+
+            //exibirá o percentual do vídeo, na barra de progresso, com uma casa decimal
+            divInterna.innerHTML = `${percentualDoVideo.toFixed(1)}%`
+
+        }, 7)
+
+    }
+
+
+
+    configurarVideo('meuVideo')
 </script>
