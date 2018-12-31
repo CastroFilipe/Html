@@ -6,7 +6,74 @@
     <title>CSS Selectors</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        /*Seletor universal*/
+        /* * {
+            color: #ff0;
+            background-color: blue;
+        }*/
+
+        /*Seletor classe*/
+        /* .tag {
+            color: #ff0;
+            background-color: blue;
+        } */
+
+        /*seletor via ID*/
+        /* #aprovados {
+            color: #ff0;
+            background-color: blue;
+        } */
+
+        /*Aplicará o estilo na DIV presente dentro da outra DIV com ID alinhado*/
+        /* #alinhado > div {
+            color: #ff0;
+            background-color: blue;
+        } */
+
+        /*Aplicará o estilo em qualquer section dentro da DIV. Não importa o grau de descendencia. */
+        /* #alinhado section {
+            color: #ff0;
+            background-color: blue;
+        } */
+
+        /*aplicará o estilo em qualquer ul que venha após uma tag p*/
+        /* p + ul {
+            color: #ff0;
+            background-color: blue;
+        } */
+        
+        /*aplicará o estilo em qualquer ol irmão de p*/
+        /* p ~ ol {
+            color: #ff0;
+            background-color: blue;
+        } */
+
+        /*Aplicará o estilo em todos os elementos com a propriedade feira. 
+        Experimente 
+        [feira=casa]
+        [feira~=escritorio]
+        [feira*=sa]
+        [feira*=asa]
+
+        [feira] {
+            color: #ff0;
+            background-color: blue;
+        }*/
+
+        /*span deve ser o primeiro elemento filho de uma outra tag qualquer*/
+        /* span:nth-child(1) {
+            color: #ff0;
+            background-color: blue;
+        } */
+
+        /*seleciona os filhos impares
+        section > :nth-child(odd)
+        */
+        section > :nth-child() {
+            color: #ff0;
+            background-color: blue;
+        }
+
     </style>
 </head>
 
@@ -27,9 +94,9 @@
                 <li>Pedro</li>
                 <li>Ana</li>
             </ol>
-            <div id='aninhado' class='tag'>
+            <div id='alinhado' class='tag'>
                 <div class="tag">
-                    <section class='tag'>
+                    <section class='tag nolabel'>
                         <span class='tag'>1</span>
                         <p class='tag'>2</p>
                         <span class='tag'>3</span>
