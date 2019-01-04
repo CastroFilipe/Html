@@ -7,7 +7,129 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+
+        /*A box-sizing propriedade define como a largura e a altura de um 
+        elemento são calculadas: se devem incluir preenchimento e bordas ou não.*/
+        * {
+            box-sizing: border-box; /*inclue o preenchimento*/
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+            background-color: lightgray;
+        }
+
+        .cabecalho {
+            background-color: #333;
+            border-bottom: solid 5px #4faddb;/*tamanho inferior da borda*/
+            height: 80px;
+            box-sizing: content-box; /*considera o tamanho apenas do conteúdo*/
+        }
+
+        .logo {
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+
+        /*qualquer imagem descendente de .logo*/
+        .logo img {
+            height: 100%;/*100% do espaço disponivel, no caso o espaço definido em .logo*/
+        }
+
+        /*Icone do menu*/
+        .menu-toggle {
+            float: right; /*posiciona a direita na tela*/
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px; /*altura do icone*/
+            padding: 10px 20px;
+            margin: 20px 15px;
+        }
+
+        .menu {
+            display: inline-block; /*O menu inteiro vai para a mesma linha da imagem.*/
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
+
+        /*qualquer ul dentro de uma classe menu*/
+        .menu ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            display: inline-block;/*as opções do menu ficarão na mesma linha*/
+        }
+
+        /*remove os estilos, como o hiperlink presente nos links*/
+        a:link {
+            text-decoration: none;
+        }
+
+        /*Estilos aplicados nas palavras do cabeçalho, inicio, cursos, login etc*/
+        .cabecalho a{  
+            color: #fff; 
+            font-size: 1.3em;
+        }
+
+        .menu a {
+            padding: 15px;
+        }
+        
+        .autenticacao{
+            float: right;
+            height: 80px; /*altura do icone*/
+            padding: 25px;
+        }
+
+        /*Muda as cores quando o mouse passar por cima*/
+        .menu a:hover{
+            background-color: #4faddb;
+        }
+
+        /*a classe selected será aplicada via javascript e indicará que um item do menu foi selecionado.*/
+        .menu a.selected {
+            background-color: #4faddb;
+            color: #000;
+        }
+
+        .botao{
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 10px;
+        }
+
+        /*botão de registrar*/
+        .destaque {
+            background-color: red;
+            color: #fff;
+        } 
+
+        /*O menu toggle se tornará invisível quando a janela foi maior que 679px*/
+        @media(min-width: 679px) {
+            .menu-toggle{
+                display: none;
+            }
+        }
+
+        /*O menu de opções se tornará invisível quando a janela for menor que 680px*/
+        @media(max-width: 680px){
+            .menu {
+                display: none;
+            }
+        }
+
+        @media(max-width: 910px){
+            .autenticacao{
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -44,7 +166,22 @@
     </header>
 
     <script>
-        // ...
+        //A função onhashchange será chamada sempre que o hash da url mudar. Observar isso ao selecionar um dos itens do menu
+        window.onhashchange = e => {
+
+            //faz um split na antiga url para pegar apenas a parte após o #
+            const urlAnteiror = e.oldURL.split('#')[1];
+            const urlNova = e.newURL.split('#')[1];
+
+            console.log(urlAnteiror, urlNova);//para testes.. Visulaizar no inspetor
+
+            const oldMenu = document.querySelector(`.menu a[href='#${urlAnteiror}']`)
+            const newMenu = document.querySelector(`.menu a[href='#${urlNova}']`)
+
+            oldMenu && oldMenu.classList.remove('selected')//remove a class selected do item anteriormente selecionado.
+            newMenu && newMenu.classList.add('selected')//após a remoção do anteriro, será adicionado a classe selected ao novo item selecionado
+
+        }
     </script>
 </body>
 
