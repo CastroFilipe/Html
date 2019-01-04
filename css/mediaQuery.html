@@ -10,7 +10,21 @@
             padding: 20px;
             background-color: coral;
             border: solid 5px;
-            display: none;
+            display: none;/*ocutará os elementos*/
+        }
+
+        /*Exibirá o conteúdo quando a janela tiver no máximo 600px de largura*/
+        @media (max-width: 600px) {
+            .muito-pequeno { display: block;} 
+        }
+
+        /*A orientação servirá em dispositivos mobile, se o smartphone estiver na horizontal, o elemento não irá ser mostrado.*/
+        @media (max-width: 1000px), (orientation: portrait) {
+            .pequeno-retrato {display: block;}
+        }
+
+        @media (min-width: 700px) and (max-width:1000px) {
+            .intervalo {display:block;}
         }
     </style>
 </head>
