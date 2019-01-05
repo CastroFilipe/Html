@@ -22,6 +22,15 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+
+        body{
+            display: grid;
+            grid-template-columns: 50% 50%; /*duas colunas com 50% cada*/
+            grid-template-columns: repeat(12, 8.33%); /*12 colunas de 8.33%*/
+            grid-template-columns: 200px 20% 1fr;/*divide em 3 colunas. A primeira fixa, a segunda com 20% e o que sobrar vai para a 3°*/
+            /*grid-template-columns: 50% 25% 12.5% 12.5%; /*divide em 4 colunas com as medidas em % do total*/
+            grid-template-rows: 50% 25% 12.5% 12.5%; /*divide em linhas*/
+        }
     </style>
 </head>
 

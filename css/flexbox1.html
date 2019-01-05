@@ -6,7 +6,31 @@
     <title>Flexbox #01</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
+
+        .big {
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column; /*usa o mainAxis(linha vertical) como coluna*/
+            flex-direction: column-reverse; /*inverte a ordem dos elementos*/
+            flex-direction: row-reverse;/*inverte a ordem dos elementos, porém considerando o eixo horizontal e não o vertical*/
+            flex-direction: row; /*é o padrão que vem setado*/
+            width: 50%;
+            flex-wrap: wrap; /*permite a quebra de linha para adequar o conteúdo ao novo tamanho de 50%*/
+
+            justify-content: flex-start; /*inicia a distribuição do conteúdo a partir do inicio*/
+            justify-content: flex-end;/*a partir do fim*/
+            justify-content: center;/*a partir do centro*/
+            justify-content: space-around; /*organiza os elementos com espaços bem distribuídos*/
+            
+        }
     </style>
 </head>
 

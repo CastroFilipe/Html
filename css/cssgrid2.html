@@ -20,6 +20,15 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+
+        body {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /*espaços iguais para tres colunas*/
+            grid-template-rows: repeat(3, 1fr); /*divide em tres linhas iguais*/
+            grid-column-gap: 20px; /*espaço entre colunas*/
+            grid-row-gap: 20px; /*espaço entre linhas*/
+
+        }
     </style>
 </head>
 
