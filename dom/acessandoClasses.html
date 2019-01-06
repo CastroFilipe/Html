@@ -12,7 +12,17 @@
         Classes
     </div>
     <script>
-        // ...
+        //seleciona todas as classes da tag div
+        const classes = document.querySelector('div').classList
+
+        classes.add('destaque')
+        classes.remove('destaque')
+        classes.toggle('destaque')//se a classe destaque já está presente o metodo a removerá, se não o metodo adicionará
+        
+        console.log(classes.contains('destaque'))//true caso contenha.
+        console.log(classes.length)
+        
+
     </script>
 </body>
 
