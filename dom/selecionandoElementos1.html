@@ -10,7 +10,29 @@
     <div>Segundo</div>
     <div class="terceiro ultimo">.terceiro .ultimo</div>
     <script>              
-        // ...
+        //pega o elemento com id='primeiro' e adiciona a classe 'destaque'. Assim o css aplicará um novo estilo ao elemento.
+        document.getElementById('primeiro').classList.add('destaque')
+
+        //pega todas as div's
+        const divs = document.getElementsByTagName('div')
+
+        //converte para um array de divs
+        const arrayDivs = Array.from(divs)
+
+        //percorerá o array removendo a classe 'destaque' de cada div
+        arrayDivs.forEach(e => e.classList.remove('destaque'))
+
+        //adicionando novamente a classe destaque em todos as divs
+        arrayDivs.forEach(e => e.classList.add('destaque'))
+
+        //pega o(s) elemento(s) com a classe 'ultimo'
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        for(let e of ultimosElementos){//percorre cada elemento com a classe 'ultimo'
+            e.classList.remove('destaque')//remove a classe destaque
+        }
+
+
+
     </script>
 </body>
 </html>

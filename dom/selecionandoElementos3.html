@@ -31,7 +31,22 @@
         <button>Pesquisar</button>
     </form>
     <script>
-        // ...
+        //exibe os elementos do formulário num html colection
+        console.log(document.forms)
+
+        console.log(document.forms[0])
+        console.log(document.getElementsByName('pesquisa'))
+        console.log(document.getElementsByName('form'))
+
+        console.log(document.pesquisa)
+        console.log(document.pesquisa.q)
+
+        //adicionando um valor ao texto do formulário.
+        document.pesquisa.q.value = 'linux'
+
+        //selecionando o valor do select
+        document.pesquisa.hl.value = 'en-us'
+
     </script>
 </body>
 
