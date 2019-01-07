@@ -12,7 +12,14 @@
         <p>Texto Inicial</p>
     </div>
     <script>
-        // ...
+        const div = document.querySelector('div')
+        div.innerHTML = 'textoAlterado' //substituirá tudo dentro da div.
+        //div.outerHTML = 'texto Alterado'//substituirá a div inteira. A div deixará de exixtir.
+        div.insertAdjacentHTML('beforebegin', '<p>Antes da div</p>')//adiciona o paragrafo antes da Div
+
+        // somente texto (sem tags)
+        console.log(div.innerText)
+
     </script>
 </body>
 

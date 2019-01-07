@@ -9,7 +9,38 @@
 
 <body class='conteudo exercicio'>
     <script>
-        // ...
+        const body = document.querySelector('body')
+
+        const div1 = document.createElement('div')//criará uma div
+
+        div1.classList.add('destaque')//adiciona uma classe a div recém criada
+        div1.innerHTML = 'Primeiro'//texto que será adicionado a div
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atribute', 'valor')
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+        const div3 = document.createElement('div')
+        div3.appendChild(p) //adicionará o paragrafo criado a div3
+
+        body.appendChild(div1)//adicionará as divs ao body, mostrando os na página
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        const texto = document.createTextNode('Elemento adicionado antes')
+
+        //adicionará o texto antes do primeiro elemento já presente na div3
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        //faz um clone da div3, com todos os elementos inclusos
+        const div4 = div3.cloneNode(true)
+        body.appendChild(div4)
+
+        body.removeChild(div3)
+
+
     </script>
 </body>
 
