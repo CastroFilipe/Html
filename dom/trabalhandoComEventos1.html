@@ -12,6 +12,28 @@
         <a href="https://google.com.br">Google</a>
     </div>
     <script>
-        // ...
+        //primeira abordagem: criar uma função e modificar o html com o onclick='function()'
+
+        //a função fará a página ser acessada apenas após decorridos 5s após o click do link.
+        function navegarEm5s(e) { //recebe um evento como parametro, nesse caso o evento é o do click no link
+            e.preventDefault()//metodo que remove o comportamento padrão do evento.
+
+            console.log('saindo em 5s....')
+
+            //função setTimeout executará a arrowFunction apenas depois de 5s
+            setTimeout(() =>{
+                //o evento e possui um atributo chamado target que contém o link clicado
+                const link = e.target
+
+                //Window.location.href é a barra de navegação. Aqui estou adicionando o link clicado a barra de navegação
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        //segunda abordagem. com ela não será preciso modificar o html
+        const a = document.querySelector('a')
+        a.onclick = navegarEm5s
+
+        //terceira abordagem, usando atributos criados.
     </script>
 </body>

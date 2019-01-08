@@ -31,6 +31,23 @@
         <button wm-submit>Pesquisar</button>
     </form>
     <script>
-        // ...
+        const submit = document.querySelector('[wm-submit]')//pega o botão
+
+        submit.onclick = function(e){//quando o botão for clicado
+            e.preventDefault()//interrompe o comportamento padrão ao clicar no botão.
+
+            const form = e.target.parentNode //Pega o formulário. e.target é o botão 'pesquisar'
+            
+            //O objeto formData contém os dados do formulário.
+            const formData = new FormData(form)
+
+            //get exibirá os valores contidos no formulário
+            console.log(formData.get('q'), formData.get('hl'))
+
+            for (let dado of formData) {
+                console.log(dado)
+            }
+
+        }
     </script>
 </body>
