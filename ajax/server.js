@@ -4,12 +4,11 @@
 const bodyParser = require('body-parser')//usado para converter os dados vindos do navegador para o formato Json
 const express = require('express')//fremawork web
 const app = express()//instanciando o express
-
+const multer = require('multer')
 
 //middlewares. Ou funções que serão aplicadas quando as requisições chegarem
 
 app.use(express.static('.'))//o servidor irá prover arquivos estaticos(.html, .js, .css etc) a partir do diretorio atual (raiz)
-
 
 //Faz o bodyparser em todas as requisições que vierem de um formulário, Transformando em um objeto
 app.use(bodyParser.urlencoded({extended: true}))
@@ -19,6 +18,13 @@ app.use(bodyParser.json())
 
 //requisições get para a url /teste. Retornará um Ok
 app.get('/teste', (req, res) => res.send('ok'))
+
+app.post('/formulario', (req, res) => {
+    res.send({
+        ...req.body,
+        id: 1
+    })//enviará como resposta um objeto contendo todos os elementos que vieram na requisição e um id
+})
 
 //executando o servidor.
 app.listen(8080, () => console.log('executando o servidor...'))

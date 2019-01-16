@@ -11,6 +11,18 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        //caminho do arquivo .json onde estão dados dos estados Brasileiros
+        const url = 'dados/estados.json' 
+
+        const promisse = fetch(url)
+        const promisse2 = promisse.then(resp => resp.json())
+        promisse2.then(estados => {
+            const itens = estados.reduce(//itera em cada elemento do Json, chamando a função passada como parametro.
+                (htmlAcumulado, estado) => htmlAcumulado + `<li>${estado.nome}</li>` , '' 
+                )
+            
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>` )
+        })
+    
     </script>
 </body>

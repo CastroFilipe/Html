@@ -29,6 +29,14 @@
     </form>
     <div id="resultado"></div>
     <script>
-        // ...
+        //interceptando a submissão do formulário de forma assincrona
+        document.usuarioForm.onsubmit = async e => {
+            e.preventDefault()//Impedindo o comportamento padrão de uma submissão
+
+            const form = e.target //pega o furmulário onde o evento foi disparado
+            const data = new FormData(form)//coloca os dados do formulário em um objeto data
+            
+
+        }
     </script>
 </body>
